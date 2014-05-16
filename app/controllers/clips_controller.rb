@@ -14,8 +14,9 @@ class ClipsController < ApplicationController
 
   def save
     # new_clip= Clip.search(params[:query])
-    new_hash = {:title => Clip.search(params[:query])[:videos][0]['snippet']['title'], :url => Clip.search(params[:query])[:videos][0]['id']['videoId']}
-    @user.clips << new_hash
-    redirect_to root_path
+    new_hash = Clip.create({:title => Clip.search(params[:query])[:videos][0]['snippet']['title'], :url => Clip.search(params[:query])[:videos][0]['id']['videoId']})
+
+
+    redirect_to '/clips/search'
   end
 end
