@@ -4,6 +4,8 @@ require 'google/api_client'
 
 class Clip < ActiveRecord::Base
 
+    has_many :shares
+
 
   def self.search(query)
 
@@ -29,7 +31,18 @@ class Clip < ActiveRecord::Base
 
     search_response.data.items.each do |search_result|
       case search_result.id.kind
+
         when 'youtube#video'
+
+          # video_hash = search_result.to_hash
+
+          # clean_hash = {
+          #   image: video_hash['snippet']['thumbnails']['high']['url'],
+          #   titl:
+          # }
+
+          # videos.push(clean_hash)
+
           videos.push(search_result.to_hash)
         when 'youtube#channel'
           channels.push(search_result.to_hash)
@@ -43,6 +56,8 @@ class Clip < ActiveRecord::Base
       channels: channels,
       playlists: playlists
     }
+
+    Clip.new({:title => Clip.search(params[:query])[:videos][0]['snippet']['title'], :url => Clip.search(params[:query])[:videos][0]['id']['videoId']})
 
   end
 

@@ -1,0 +1,21 @@
+<p>results.html.erb</p>
+
+
+
+<% @clips[:videos].each do |clip| %>
+
+<div>
+  <img src="<%= clip['snippet']['thumbnails']['high']['url'] %>"/>
+      <div> Title <%= clip['snippet']['title'] %></div>
+      <div> video id <%= clip['id']['videoId'] %></div>
+    </div>
+  </div>
+  <form action="/clips/save" method="post">
+    <%= token_tag %>
+    <input type="hidden" name="video_id" value="<%= clip['id']['videoId'] %>" >
+    <button type="submit">Save</button>
+  </form>
+</div>
+
+<% end %>
+

@@ -26,8 +26,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# API gem needed to use API
+gem 'google-api-client'
+
+# DEV gems for debug and testing
 gem 'pry'
 gem 'rspec-rails'
 
+# PROD gems for making things work on Heroku and other fanciful stuff
+gem 'rails_12factor', group: :production
+gem 'font-awesome-rails'
 
-gem 'google-api-client'

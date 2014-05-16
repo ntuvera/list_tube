@@ -1,0 +1,9 @@
+api commands
+
+find video about "stuff"
+
+console: Clip.search("stuff")
+
+break down
+
+Clip.search("stuff")[:videos][0]
