@@ -1,4 +1,4 @@
-<p>results.html.erb</p>
+<p>show.html.erb</p>
 
 
 
@@ -13,9 +13,18 @@
   <form action="/clips/save" method="post">
     <%= token_tag %>
     <input type="hidden" name="video_id" value="<%= clip['id']['videoId'] %>" >
+    <input type="hidden" name="id" value="<%= clip.id%>" >
     <button type="submit">Save</button>
   </form>
+    <form action="/clips/destroy" method="post">
+      <%= token_tag %>
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit">
+     remove
+      </button>
+
+</div>
 </div>
 
 <% end %>
-
+<i class='fa fa-trash-o'></i>

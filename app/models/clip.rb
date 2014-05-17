@@ -57,7 +57,9 @@ class Clip < ActiveRecord::Base
       playlists: playlists
     }
 
-    Clip.new({:title => Clip.search(params[:query])[:videos][0]['snippet']['title'], :url => Clip.search(params[:query])[:videos][0]['id']['videoId']})
+    Clip.new({:title => Clip.search(params[:query])[:videos][params[:video_id].to_i]['snippet']['title'],
+      :url => Clip.search(params[:query])[:videos][params[:video_id].to_i]['id']['videoId'],
+      :thumburl =>  Clip.search(params[:query])[:videos][params[:video_id].to_i]['snippet']['thumbnails']['high']['url']})
 
   end
 
