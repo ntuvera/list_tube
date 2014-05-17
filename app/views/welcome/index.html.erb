@@ -1,6 +1,25 @@
-<p>test</p>
+<div class="splash_welcome">
+  <h5>
+    Welcome <%= @current_user.name %>
+  </h5>
+</div>
 
 
-<p>username text field</p>
-<p>password text field</p>
-<p>submit button</p>
+<form action="/clips/search" method="get">
+  <input type="text" name="query" placeholder="... search for">
+  <input type="submit">
+</form>
+
+<% @clips.each do |clip| %>
+<%= binding.pry %>
+  <div>
+    <img src="<%= clip.thumburl %>" >
+
+    <h3>
+      <%= clip.title %>
+    </h3>
+    <h5>
+      <%= clip.url %>
+    </h5>
+
+<% end %>

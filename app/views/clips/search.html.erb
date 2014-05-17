@@ -1,8 +1,19 @@
 <p>search.html.erb</p>
 
-<form action="/clips/show" method="get">
-  <input type="text" name="query" placeholder="What are you looking for?">
-  <input type="submit">
-</form>
+<% @clips[:videos].each do |clip| %>
 
+  <div>
 
+    <div>
+      <h2><%= clip[:title] %></h2>
+    </div>
+    <img src="<%= clip[:thumburl] %>" alt="">
+<% end %>
+
+    <form action="/clips/save" method="post">
+      <%= token_tag %>
+      <input type="hidden" name="video_id" >
+      <input type="submit" value="Save">
+    </form>
+
+  </div>

@@ -4,8 +4,7 @@ require 'google/api_client'
 
 class Clip < ActiveRecord::Base
 
-    has_many :shares
-
+    has_and_belongs_to_many :users
 
   def self.search(query)
 
@@ -34,20 +33,22 @@ class Clip < ActiveRecord::Base
 
         when 'youtube#video'
 
-          # video_hash = search_result.to_hash
+          video_hash = search_result.to_hash
 
-          # clean_hash = {
-          #   image: video_hash['snippet']['thumbnails']['high']['url'],
-          #   titl:
-          # }
+          clean_hash = {
+            title: video_hash['snippet']['title'],
+            url: video_hash['id']['videoId'],
+            thumburl: video_hash['snippet']['thumbnails']['high']['url']
+          }
 
-          # videos.push(clean_hash)
-
-          videos.push(search_result.to_hash)
+          videos.push(clean_hash)
+          # videos.push(search_result.to_hash)
         when 'youtube#channel'
-          channels.push(search_result.to_hash)
+          videos.push(clean_hash)
+          # channels.push(search_result.to_hash)
         when 'youtube#playlist'
-          playlists.push(search_result.to_hash)
+          videos.push(clean_hash)
+          # playlists.push(search_result.to_hash)
       end
     end
 
@@ -57,10 +58,17 @@ class Clip < ActiveRecord::Base
       playlists: playlists
     }
 
-    Clip.new({:title => Clip.search(params[:query])[:videos][params[:video_id].to_i]['snippet']['title'],
-      :url => Clip.search(params[:query])[:videos][params[:video_id].to_i]['id']['videoId'],
-      :thumburl =>  Clip.search(params[:query])[:videos][params[:video_id].to_i]['snippet']['thumbnails']['high']['url']})
+    # Clip.new({:title => Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['title'],
+    #   :url => Clip.search(params[:query])[:videos][params[:video_id].['id']['videoId'],
+    #   :thumburl =>  Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['thumbnails']['high']['url']})
 
+    clip_hash ={
+      title: Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['title'],
+      url: Clip.search(params[:query])[:videos][params[:video_id]]['id']['videoId'],
+      thumburl: Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['thumbnails']['high']['url']
+    }
+
+    Clip.new(clip_hash)
   end
 
   private
