@@ -4,7 +4,7 @@ class CreateClips < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.string :thumburl
-      t.integer :video_id
+      t.references :user
       t.timestamps
     end
   end

@@ -1,6 +1,6 @@
 class ClipsController < ApplicationController
 
-  # before_action:current_user
+  before_action:current_user
 
   def search
     @clips = Clip.search(params[:query])
@@ -8,17 +8,23 @@ class ClipsController < ApplicationController
 
   def save
 
-    new_clip = Clip.create({:title => Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['title'],
-    :url =>   Clip.search(params[:query])[:videos][params[:video_id]]['id']['videoId'],
-    :thumburl =>  Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['thumbnails']['high']['url']})
+    clip = Clip.search(params[:query])
+    # binding.pry
+    # new_clip = Clip.create(
+    # :title => Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['title'],
+    # :url =>   Clip.search(params[:query])[:videos][params[:video_id]]['id']['videoId'],
+    # :thumburl =>  Clip.search(params[:query])[:videos][params[:video_id]]['snippet']['thumbnails']['high']['url'])
+    # current_user.clips << new_clip
 
-    # new_clip = Clip.create({:title => Clip.search(params[:video_id])[:videos][params[:id]]['snippet']['title'],
-    # :url =>   Clip.search(params[:video_id])[:videos][params[:id]]['id']['videoId'],
-    # :thumburl =>  Clip.search(params[:video_id])[:videos][params[:id]]['snippet']['thumbnails']['high']['url']})
-    # new_clip.save
-    # @current_user.clips << new_clip
-    user.clips << new_clip
-    redirect_to '/clips/search'
+
+binding.pry
+    new_clip = Clip.create({:title => Clip.search(params[:query])[:videos][params["clip_id"]][:title],
+    :url =>   Clip.search(params[:query])[:videos][params["clip_id"]][:url],
+    :thumburl =>  Clip.search(params[:query])[:videos][params["clip_id"]][:thumburl]})
+    new_clip.save
+    @current_user.clips << new_clip
+
+    redirect_to root_path
   end
 
   def destroy

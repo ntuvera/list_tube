@@ -1,5 +1,7 @@
 <p>search.html.erb</p>
 
+<!-- query is passed through -->
+
 <% @clips[:videos].each do |clip| %>
 
   <div>
@@ -9,12 +11,13 @@
     <a href="https://www.youtube.com/watch?v=<%= clip[:url] %>">
       <img src="<%= clip[:thumburl] %>" alt="">
     </a>
+
+    <form action="/clips/save/" method="post">
+      <%= token_tag %>
+      <input type="hidden" name="query" value="<%= params[:query] %>">
+      <input type="hidden" name="clip_id"  value="<%= clip[title] %>" >
+      <button type="submit">Save</button>
+    </form>
+  </div>
 <% end %>
 
-    <form action="/clips/save" method="post">
-      <%= token_tag %>
-      <input type="hidden" name="video_id" >
-      <input type="submit" value="Save">
-    </form>
-
-  </div>

@@ -20,21 +20,18 @@ ActiveRecord::Schema.define(version: 20140517173422) do
     t.string   "title"
     t.string   "url"
     t.string   "thumburl"
-    t.integer  "video_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "shares", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "video_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "clips_users", force: true do |t|
+    t.integer "user_id"
+    t.integer "clip"
   end
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
