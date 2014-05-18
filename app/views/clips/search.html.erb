@@ -3,11 +3,12 @@
 <% @clips[:videos].each do |clip| %>
 
   <div>
-
     <div>
       <h2><%= clip[:title] %></h2>
     </div>
-    <img src="<%= clip[:thumburl] %>" alt="">
+    <a href="https://www.youtube.com/watch?v=<%= clip[:url] %>">
+      <img src="<%= clip[:thumburl] %>" alt="">
+    </a>
 <% end %>
 
     <form action="/clips/save" method="post">
