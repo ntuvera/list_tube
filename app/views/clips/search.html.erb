@@ -17,7 +17,7 @@
       <%= token_tag %>
 
       <input type="hidden" name="query" value="<%= params[:query] %>">
-      <input type="hidden" name="clip_id" value="<%= index.to_i %>">
+      <input type="hidden" name="clip_id" value="<%= index.to_i + 1 %>">
       <button type="submit">Save</button>
     </form>
 
