@@ -4,7 +4,9 @@ class WelcomeController < ApplicationController
 
   def index
 
-    @clips = Clip.all
+    @user  = User.find_by(:name => params[:name])
+    @users = User.all
+    @clips = current_user.clips
   end
 
 end

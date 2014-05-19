@@ -3,12 +3,13 @@ class ClipsController < ApplicationController
   before_action:current_user
 
   def search
-    @clips = Clip.search(params[:query])[:videos].compact # added + 1 to post, but if more nils will cause misalignment
-
+    @clips = Clip.search(params[:query])[:videos].compact
   end
 
   def save
-    @clips = Clip.search(params[:query])[:videos]
+
+    @current_user = User.find_by(:name => params[:name])
+
     # @clips = Clip.find(params[:id])
     # clip = Clip.search(params[:query])
     # binding.pry
@@ -21,13 +22,21 @@ class ClipsController < ApplicationController
     clip_id = params.fetch(:clip_id)
 
     new_clip = Clip.new
-    # totally unsecure hack, but will fix eventually -- just needed to move foward
+    # total workaround, but will fix eventually -- just needed to move foward
     new_clip = Clip.create({
-    :title =>     Clip.search(params[:query])[:videos][params[:clip_id].to_i][:title],
-    :url =>       Clip.search(params[:query])[:videos][params[:clip_id].to_i][:url],
+    :title    =>  Clip.search(params[:query])[:videos][params[:clip_id].to_i][:title],
+    :url      =>  Clip.search(params[:query])[:videos][params[:clip_id].to_i][:url],
     :thumburl =>  Clip.search(params[:query])[:videos][params[:clip_id].to_i][:thumburl]})
-    new_clip.save
-    @current_user.clips << new_clip
+binding.pry
+    # @clip = Clip.new(params[:clip_id])
+    # current_user.clips << @clip
+    # ClipUser.create({user_id: => current_user.id, clip_id: => params[clip.id}])
+     # @current_user.clips << new_clip
+     @user = User.find(session[:user_id])
+     @clip = Clip.find(new_clip)
+     @user.clips << @clip
+     flash[:notice] = 'Event was saved.'
+
 
     redirect_to root_path
   end

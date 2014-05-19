@@ -39,3 +39,4 @@ gem 'font-awesome-rails'
 
 gem 'heroku'
 
+gem 'bcrypt'

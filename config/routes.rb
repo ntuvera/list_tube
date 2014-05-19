@@ -7,4 +7,13 @@ Rails.application.routes.draw do
   post 'clips/edit'       => 'clips#edit'
   delete 'clips/:id'      => 'clips#destroy'
 
+  get 'users/'            => 'users#index'
+  get 'users/new'         => 'users#new'
+  post 'users'            => 'users#create'
+  get 'users/show'        => 'users#show'
+
+  get 'sessions/new'      => 'sessions#new', as: 'log_in'
+  post 'sessions'         => 'sessions#create'
+
+  delete 'sessions'       =>  'sessions#destroy', as: 'log_out'
 end
