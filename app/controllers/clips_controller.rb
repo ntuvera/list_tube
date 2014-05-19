@@ -3,7 +3,7 @@ class ClipsController < ApplicationController
   before_action:current_user
 
   def search
-    @clips = Clip.search(params[:query])[:videos].compact
+    @clips = Clip.search(params[:query])[:videos].compact # added + 1 to post, but if more nils will cause misalignment
 
   end
 
@@ -30,6 +30,10 @@ class ClipsController < ApplicationController
     @current_user.clips << new_clip
 
     redirect_to root_path
+  end
+
+  def edit
+
   end
 
   def destroy

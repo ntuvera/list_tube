@@ -14,6 +14,11 @@
 
   <div>
     <img src="<%= clip.thumburl %>" >
+    <form action="clips/edit/<%= clip.id %>" method="get">
+      <button type="submit">
+        Send
+      </button>
+    </form>
     <form action="clips/<%= clip.id %>" method='post'>
       <%= token_tag %>
       <input type ="hidden" name="_method" value='delete'>
@@ -28,5 +33,5 @@
     <h5>
       <%= clip.url %>
     </h5>
-
+    <h5>From: <%= %></h5>
 <% end %>
