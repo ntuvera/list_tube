@@ -1,0 +1,19 @@
+<p>saved itmes</p>
+
+<% @clips.each do |clip| %>
+<%= binding.pry %>
+  <div>
+    <img src="<%= clip['snippet']['thumbnails']['high']['url'] %>"/>
+      <div>Title:  <%= clip['snippet']['title'] %></div>
+    <form action="/clips/destory" method="post">
+      <%= token_tag %>
+      <input type="hidden" name="_method" value="delete">
+        <button type="submit">
+          Remove
+        </button>
+    </form>
+
+  </div>
+
+<% end %>
+

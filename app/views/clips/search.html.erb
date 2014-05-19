@@ -2,7 +2,7 @@
 
 <!-- query is passed through -->
 
-<% @clips[:videos].each do |clip| %>
+<% @clips.each_with_index do |clip, index| %>
 
   <div>
     <div>
@@ -12,12 +12,15 @@
       <img src="<%= clip[:thumburl] %>" alt="">
     </a>
 
+
     <form action="/clips/save/" method="post">
       <%= token_tag %>
+
       <input type="hidden" name="query" value="<%= params[:query] %>">
-      <input type="hidden" name="clip_id"  value="<%= clip[title] %>" >
+      <input type="hidden" name="clip_id" value="<%= index.to_i %>">
       <button type="submit">Save</button>
     </form>
-  </div>
-<% end %>
 
+  </div>
+
+<% end %>
