@@ -3,8 +3,9 @@
   <h3>
     Welcome <%= current_user.name %>
   </h3>
+    <button type="submit" name="Log out">
     <%= link_to "Log-Out", log_out_path, method: :delete %>
-
+    </button>
 <form action="/clips/search" method="get">
   <input type="text" name="query" placeholder="... search for">
   <input type="submit">
@@ -36,8 +37,9 @@
     <h5>From: <%= %></h5>
 <% end %>
   <% else %>
-    <%= link_to "Log-In", log_in_path %>
-    <%= link_to "Sign-Up", users_new_path %>
+  <h3> Please Log in or Sign up to use this app </h3>
+    <%= button_to "Log-In", log_in_path %>
+    <%= button_to "Sign-Up", sign_up_path %>
 </div>
 
 <% end %>

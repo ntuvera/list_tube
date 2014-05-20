@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete 'clips/:id'      => 'clips#destroy'
 
   get 'users/'            => 'users#index'
-  get 'users/new'         => 'users#new'
+  get 'users/new'         => 'users#new', as: 'sign_up'
   post 'users'            => 'users#create'
   get 'users/show'        => 'users#show'
 

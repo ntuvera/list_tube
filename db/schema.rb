@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 20140519202210) do
     t.integer "clip_id"
   end
 
-  create_table "saves", force: true do |t|
-    t.integer  "clips_id"
-    t.integer  "users_id"
+  create_table "shares", force: true do |t|
+    t.integer  "users_id_id"
+    t.integer  "receiver_id_id"
+    t.integer  "clip_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
