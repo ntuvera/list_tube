@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
 
   def index
-    @user  = current_user
-    @users = User.all
-    @clips = current_user.clips
+
+    @user      = current_user
+    @users     = User.all
+    @clips     = current_user.clips
+    @rec_clips = current_user.shares
+
+
+
+    # @sender    = User.find_by(id: 1) # @rec_clips[index].receiver_id) #  <<<<< THIS!!
   end
 
   def new

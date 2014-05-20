@@ -1,6 +1,6 @@
 class Share < ActiveRecord::Base
   belongs_to :users
-  belongs_to :receivers, :class_name => "User"
-  has_many :clips
+  belongs_to :receiver, :class_name => "User"
+  has_many :shares
 
 end

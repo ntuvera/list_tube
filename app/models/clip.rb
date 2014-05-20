@@ -5,6 +5,8 @@ require 'google/api_client'
 class Clip < ActiveRecord::Base
 
     has_and_belongs_to_many :users, through: :clips_users
+    has_and_belongs_to_many :users, through: :shares
+    has_many :shares
 
   def self.search(query)
 

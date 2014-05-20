@@ -25,7 +25,7 @@ class SharesController < ApplicationController
       @receiver = User.find_by name: params["receiver_id"]
     # take clip_id, current_user_id, receiver_id and add to share table
       new_share = Share.create({:user_id => @user.id, :receiver_id => @receiver.id, :clip_id => @clip.id})
-
+      redirect_to play_lists_path, notice: 'Clip sent'
     end
 
 end
