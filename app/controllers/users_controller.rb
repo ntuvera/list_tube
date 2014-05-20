@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     @user  = current_user
     @users = User.all
+    @clips = current_user.clips
   end
 
   def new
@@ -10,8 +11,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(user_params)
-    redirect_to root_path
+    current_user = User.create(user_params)
+    redirect_to log_in_path
   end
 
   def show

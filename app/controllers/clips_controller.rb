@@ -21,19 +21,21 @@ class ClipsController < ApplicationController
      @user = User.find(session[:user_id])
      @clip = Clip.find(new_clip)
      @user.clips << @clip
-     flash[:notice] = 'Event was saved.'
+     flash[:notice] = 'Clip saved.'
 
 
-    redirect_to root_path
+    redirect_to play_lists_path
   end
 
-  def edit
+  def edit #send function
+    @clip = Clip.find(params[:id])
+binding.pry
 
   end
 
   def destroy
     Clip.delete(params[:id])
-    redirect_to root_path
+    redirect_to play_lists_path
   end
 
 end

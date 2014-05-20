@@ -11,10 +11,13 @@
   <input type="submit">
 </form>
 
+  <h3>Saved Playlist</h3>
 <% @clips.each do |clip| %>
 
   <div>
-    <img src="<%= clip.thumburl %>" >
+    <a href="http://www.youtube.com/watch?v=<%= clip.url %>">
+      <img src="<%= clip.thumburl %>" >
+    </a>
     <form action="clips/edit/<%= clip.id %>" method="get">
       <button type="submit">
         Send
@@ -34,12 +37,11 @@
     <h5>
       <%= clip.url %>
     </h5>
-    <h5>From: <%= %></h5>
 <% end %>
   <% else %>
   <h3> Please Log in or Sign up to use this app </h3>
-    <%= button_to "Log-In", log_in_path %>
-    <%= button_to "Sign-Up", sign_up_path %>
+    <%= link_to "Log-In", log_in_path %>
+    <%= link_to "Sign-Up", sign_up_path %>
 </div>
 
 <% end %>

@@ -3,10 +3,8 @@
 
 <img src="<%= @clip.thumburl %>">
 
-<form action="/shares" method="post">
+<form action="/shares/:id" method="post">
   <%= token_tag %>
   <input type="text" name="receiver_id" placeholder="Send To:">
   <input type="submit" value="Send">
 </form>
-
-

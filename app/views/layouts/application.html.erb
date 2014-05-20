@@ -8,6 +8,15 @@
 </head>
 <body>
 
+  <div>
+    <h1>
+      <%= flash.now[:alert] %>
+    </h1>
+    <h1>
+      <%= flash.now[:notice] %>
+    </h1>
+  </div>
+
 <%= yield %>
 
 </body>

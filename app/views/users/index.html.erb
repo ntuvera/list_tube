@@ -1,0 +1,49 @@
+<div class="splash_welcome">
+  <h3>
+    Welcome <%= current_user.name %>
+  </h3>
+    <button type="submit" name="Log out">
+    <%= link_to "Log-Out", log_out_path, method: :delete %>
+    </button>
+</div>
+<div>
+  <form action="/clips/search" method="get">
+    <input type="text" name="query" placeholder="... search for">
+    <input type="submit">
+</form>
+</div>
+
+  <h3>Saved Playlist</h3>
+<% @clips.each do |clip| %>
+
+  <table>
+    <tr>
+      <td>
+        <a href="http://www.youtube.com/watch?v=<%= clip.url %>">
+          <img src="<%= clip.thumburl %>" >
+        </a>
+      </td>
+      <td>
+        <h3>
+          <%= clip.title %>
+        </h3>
+      </td>
+      <td>
+    <form action="/shares/<%= clip.id %>" method="post">
+      <%= token_tag %>
+      <input type="text" name="receiver_id" placeholder="Send To:">
+      <button type="submit">
+        Send
+      </button>
+    </form>
+    <form action="clips/<%= clip.id %>" method='post'>
+      <%= token_tag %>
+      <input type ="hidden" name="_method" value='delete'>
+      <button type="submit">
+        Remove
+      </button>
+    </form>
+      </td>
+
+<% end %>
+

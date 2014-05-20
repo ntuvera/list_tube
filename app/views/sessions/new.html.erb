@@ -1,13 +1,14 @@
-<h3>Log in </h3>
+<div class="welcome"><h3>A Simple Playlist Editor</h3>
 
 <%= form_tag sessions_path do %>
- <%= label_tag :name %>
+ <%= label_tag :username %>
  <%= text_field_tag :name %>
  <%= label_tag :password %>
  <%= password_field_tag :password %>
  <%= submit_tag 'Log In'%>
-
+<br>
 <button type="submit">
   <%= link_to "Sign up", sign_up_path, method:"get" %>
 </button>
  <% end %>
+</div>
