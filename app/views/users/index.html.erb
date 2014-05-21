@@ -6,15 +6,16 @@
     <%= link_to "Log-Out", log_out_path, method: :delete %>
     </button>
 </div>
+
 <div>
   <form action="/clips/search" method="get">
     <input type="text" name="query" placeholder="... search for">
     <input type="submit">
 </form>
 </div>
-
-  <h3>Saved Playlist</h3>
-<% @clips.each do |clip| %>
+<div>
+  <h3>Saved Playlist (5 Most Recent saves)</h3>
+<% @clips.first(5).each do |clip| %>
 
   <table>
     <tr>
@@ -44,19 +45,8 @@
       </button>
     </form>
       </td>
-
+</table>
 <% end %>
 
-<h3> Receieved Playlist </h3>
 
-  <%= @rec_clips.each_with_index do |rclip, index| %>
-  <ul>
-    <li>
-      Clip_id of Shared clip is <%= rclip.clip_id %>
-    </li>
-    <li>
-      sent from <%=rclip.receiver.name %>
-    </li>
-  </ul>
-  <% end %>
 
