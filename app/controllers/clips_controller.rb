@@ -27,14 +27,21 @@ class ClipsController < ApplicationController
     redirect_to play_lists_path
   end
 
-  def edit #send function
+  def edit #send clip to user
     @clip = Clip.find(params[:id])
-binding.pry
+
 
   end
 
-  def destroy
-    Clip.delete(params[:id])
+  def destroy # delete from current_user playlist
+binding.pry
+    clip = Clip.find(params[:id])
+
+    current_user.clips.delete(clip)
+
+
+    # @clip = current_user.shares
+    # ClipsUser.destroy(@clip)
     redirect_to play_lists_path
   end
 

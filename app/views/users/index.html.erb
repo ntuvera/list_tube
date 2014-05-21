@@ -1,10 +1,12 @@
-<div class="splash_welcome">
+<div class="welcome container">
+  <div class="sixteen columns">
   <h3>
     Welcome <%= current_user.name %>
   </h3>
     <button type="submit" name="Log out">
     <%= link_to "Log-Out", log_out_path, method: :delete %>
     </button>
+  </div>
 </div>
 
 <div>
@@ -50,6 +52,7 @@
 
 
 
+
 <div class="share lists">
   <h3>Recent activity list</h3>
 
@@ -58,3 +61,5 @@
       <li>You sent <%= rclip.receiver.name %> <%= rclip.clip.title %></li>
     </ul>
   <% end %>
+</div>
+

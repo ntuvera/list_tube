@@ -15,6 +15,48 @@
 
   </div>
 
+
+  <div class="receieved lists">
+  <h3> Recent received list</h3>
+  <% @senders.each do |user, clip| %>
+  <table>
+    <tr>
+      <td>
+        <a href="http://www.youtube.com/watch?v=<%= clips.url %>">
+          <img src="<%= clips.thumburl %>" >
+        </a>
+      </td>
+      <td>
+        <p>receieved from <%= user.receiver.name %></p>
+      </td>
+      <td>
+        <h3>
+          <%= clips.title %>
+        </h3>
+      </td>
+      <td>
+    <form action="/shares/<%= clip.id %>" method="post">
+      need to direct action towards shares table, currently towards clips table"
+      <%= token_tag %>
+      <input type="text" name="receiver_id" placeholder="Send To:">
+      <button type="submit">
+        Send
+      </button>
+    </form>
+    <form action="clips/<%= clip.id %>" method='post'>
+      <%= token_tag %>
+      <input type ="hidden" name="_method" value='delete'>
+      <button type="submit">
+        Remove
+      </button>
+    </form>
+      </td>
+</table>
+<% end %>
+</div>
+
+
+
 <% end %>
 
 <!--- Receieved/sent list?
