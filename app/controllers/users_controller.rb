@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
 
   def index
-
+binding.pry
     @user      = current_user
     @users     = User.all
     @clips     = current_user.clips
     @rec_clips = current_user.shares
+    # @title_id  = @rec_clips[index].clip_id
+    # @title     = Clip.find_by(id: @title_id)
+    # Clip.find_by(id: current_users.shares[0].clip_id).title
 
 
 
@@ -17,8 +20,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    current_user = User.create(user_params)
-    redirect_to log_in_path
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to log_in_path
+    else
+      render 'new'
+    end
   end
 
   def show

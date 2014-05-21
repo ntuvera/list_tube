@@ -21,7 +21,7 @@ class ClipsController < ApplicationController
      @user = User.find(session[:user_id])
      @clip = Clip.find(new_clip)
      @user.clips << @clip
-     flash[:notice] = 'Clip saved.'
+     flash[:notice] = 'Clip saved'
 
 
     redirect_to play_lists_path

@@ -1,3 +1,9 @@
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+<% end %>
+
 <h2> Sign up New user </h2>
 
 

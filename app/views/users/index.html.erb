@@ -50,3 +50,11 @@
 
 
 
+<div class="share lists">
+  <h3>Recent activity list</h3>
+
+  <% @rec_clips.each do |rclip| %>
+    <ul>
+      <li>You sent <%= rclip.receiver.name %> <%= rclip.clip.title %></li>
+    </ul>
+  <% end %>
