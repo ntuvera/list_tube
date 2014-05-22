@@ -1,24 +1,33 @@
+
+<!-- floating nav bar -->
+<div class="header" id="navigation">
+  <table class="header">
+      <tr>
+        <td>
+          <i style="padding:10px;" class="fa fa-th-list fa-4x"></i>
+          <div class="red_button">
+          </div>
+        </td>
+        <td>
+          <form style="text-align:center; padding-top:25px;" action="/clips/search" method="get">
+          <input type="text" name="query" placeholder="... search for">
+          <input type="submit" class="red_button">
+        </td>
+    </form>
+
+        <td>Welcome <%= current_user.name %></td>
+        <td><%= button_to "Log Out", log_out_path, :class => "button", :method => :delete %></td>
+      </tr>
+    </table>
+
+  </div>
+
+<!-- main container -->
 <div class="border container">
-  <div class="header border sixteen columns">
-  <h3>
-    Welcome <%= current_user.name %>
-  </h3>
-    <button type="submit" name="Log out">
-    <%= link_to "Log-Out", log_out_path, method: :delete %>
-    </button>
-  </div>
 
-
-  <div class="offset-by-six columns">
-    <form action="/clips/search" method="get">
-      <input type="text" name="query" placeholder="... search for">
-      <input type="submit">
-  </form>
-  </div>
-
-  <div class="bordersixteen columns">
+  <div class="border two-thirds column">
     <h3>Saved Playlist (5 Most Recent saves)</h3>
-  <% @clips.first(5).each do |clip| %>
+      <% @clips.last(5).each do |clip| %>
 
     <table class="border">
       <tr>
@@ -31,37 +40,36 @@
           <h3>
             <%= clip.title %>
           </h3>
-        </td>
-        <td>
+      <p>
       <form action="/shares/<%= clip.id %>" method="post">
         <%= token_tag %>
         <input type="text" name="receiver_id" placeholder="Send To:">
         <button type="submit">
-          Send
+          <i class="fa fa-share fa-2x"></i>
         </button>
       </form>
       <form action="clips/<%= clip.id %>" method='post'>
         <%= token_tag %>
         <input type ="hidden" name="_method" value='delete'>
         <button type="submit">
-          Remove
+          <i class="fa fa-trash-o fa-2x"></i>
         </button>
       </form>
+        </p>
         </td>
-  </table>
-<% end %>
+    </table>
+      <% end %>
+  </div>
 
 
+  <div class="border ">
+    <h3>Recent activity list</h3>
 
-<div class="border 12 columns off set">
-<div class="share lists">
-  <h3>Recent activity list</h3>
-
-  <% @rec_clips.each do |rclip| %>
-    <ul>
-      <li>You sent <%= rclip.receiver.name %> <%= rclip.clip.title %></li>
-    </ul>
-  <% end %>
+    <% @rec_clips.each do |rclip| %>
+      <ul>
+        <li>You sent <%= rclip.receiver.name %> the video "<%= rclip.clip.title %>"</li>
+      </ul>
+    <% end %>
+  </div>
 </div>
 
-</div>

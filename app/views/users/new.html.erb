@@ -1,35 +1,32 @@
-<body class="border">
+<body class="message border">
     <% if @user.errors.any? %>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   <% end %>
 
-  <div class="border mast">
 
-
-  </div>
-  <div class="new_user border container">
-    <div class="twelve columns">
-      <h2> Sign up New user </h2>
-
-      <ul>
-      <%= form_for @user do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation %>
-        <%= f.submit %>
+  <div class="new_user container">
+    <div class="new_user">
+      <h5> Create New user </h5>
+     <%= form_for @user do |f| %>
+        <p><%= f.label :name %></p>
+        <p><%= f.text_field :name %></p>
+        <p><%= f.label :password %></p>
+        <p><%= f.password_field :password %></p>
+        <p><%= f.label :password_confirmation %></p>
+        <p><%= f.password_field :password_confirmation %></p>
+        <p><%= f.submit 'Sign Up'%></p>
       <% end %>
-      </ul>
+        <h3 style="text-align:center"> OR </h3>
       <%= form_tag sessions_path do %>
-        <%= label_tag :name %>
-        <%= text_field_tag :name %>
-        <%= label_tag :password %>
-        <%= password_field_tag :password %>
-        <%= submit_tag 'Log In'%>
+        <p><%= label_tag :name %>
+           <%= text_field_tag :name %>
+         </p>
+        <p><%= label_tag :password %>
+           <%= password_field_tag :password %>
+        </p>
+        <%= submit_tag 'Log In', :class => "red_button"%>
       <% end %>
     </div>
   </div>

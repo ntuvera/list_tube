@@ -34,7 +34,6 @@ class ClipsController < ApplicationController
   end
 
   def destroy # delete from current_user playlist
-binding.pry
     clip = Clip.find(params[:id])
 
     current_user.clips.delete(clip)
