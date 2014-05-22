@@ -3,9 +3,17 @@
 <div class="header" id="navigation">
   <table class="header">
       <tr>
-        <td>
+        <td style="display: inline-block;">
           <i style="padding:10px;" class="fa fa-th-list fa-4x"></i>
-          <div class="red_button">
+          <div style="font-size: 30px;
+                      color:white;
+                      background-color:red;
+                      border-radius: 6px;
+                      width: 70x;
+                      padding: 5px;
+                      margin-top: -65px;
+                      margin-left: 80px;">
+            ListTube
           </div>
         </td>
         <td>
@@ -15,8 +23,10 @@
         </td>
     </form>
 
-        <td>Welcome <%= current_user.name %></td>
-        <td><%= button_to "Log Out", log_out_path, :class => "button", :method => :delete %></td>
+        <td style="text-align: right;
+                    padding-top: 25px;">
+                    Welcome <%= current_user.name %>
+        <%= button_to "Log Out", log_out_path, :class => "button", :method => :delete %></td>
       </tr>
     </table>
 
