@@ -25,8 +25,11 @@ body {
 ul {
   display: inline-block;
 }
-tr {
+table{
   margin: 5px;
+}
+tr {
+  margin: 10px;
 }
 .mast {
   top: 0px;
@@ -65,7 +68,7 @@ tr {
   border-radius: 5px;
 }
 .new_user {
-  width: 60%;
+  width: 500px;
 }
 .flash {
   float: center;

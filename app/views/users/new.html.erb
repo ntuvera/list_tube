@@ -6,17 +6,17 @@
   <% end %>
 
 
-  <div class="new_user container">
-    <div class="new_user">
+  <div class=" container">
+    <div class="white new_user">
       <h5> Create New user </h5>
      <%= form_for @user do |f| %>
-        <p><%= f.label :name %></p>
-        <p><%= f.text_field :name %></p>
-        <p><%= f.label :password %></p>
-        <p><%= f.password_field :password %></p>
-        <p><%= f.label :password_confirmation %></p>
-        <p><%= f.password_field :password_confirmation %></p>
-        <p><%= f.submit 'Sign Up'%></p>
+      <p><%= f.label :name %></p>
+         <%= f.text_field :name %>
+      <%= f.label :password %>
+         <%= f.password_field :password %>
+      <p><%= f.label :password_confirmation %></p>
+         <%= f.password_field :password_confirmation %>
+         <%= f.submit 'Sign Up'%>
       <% end %>
         <h3 style="text-align:center"> OR </h3>
       <%= form_tag sessions_path do %>
