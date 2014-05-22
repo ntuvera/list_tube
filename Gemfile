@@ -40,4 +40,4 @@ gem 'font-awesome-rails'
 gem 'heroku'
 
 gem 'bcrypt'
-gem 'font-awesome-less'
+
