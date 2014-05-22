@@ -75,6 +75,6 @@ class Clip < ActiveRecord::Base
 
   private
 
-    # DEVELOPER_KEY = "ENV.fetch($DEVELOPER_KEY)"
-    DEVELOPER_KEY = "AIzaSyBvF2xGX9WCO9E-5yjphgC_j9fecYQjxnk"
+    DEVELOPER_KEY = "ENV.fetch($DEVELOPER_KEY)"
+
 end
