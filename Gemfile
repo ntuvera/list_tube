@@ -31,7 +31,7 @@ gem 'google-api-client'
 
 # DEV gems for debug and testing
 gem 'pry'
-gem 'rspec-rails'
+# gem 'rspec-rails'
 
 # PROD gems for making things work on Heroku and other fanciful stuff
 gem 'rails_12factor', group: :production
