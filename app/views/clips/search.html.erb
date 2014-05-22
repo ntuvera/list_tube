@@ -1,10 +1,42 @@
-<p>search.html.erb</p>
+
+<!-- floating nav bar -->
+<div class="header" id="navigation">
+  <table class="header">
+      <tr>
+        <td style="display: inline-block;">
+          <i style="padding:10px;" class="fa fa-th-list fa-4x"></i>
+          <div style="font-size: 30px;
+                      color:white;
+                      background-color:red;
+                      border-radius: 6px;
+                      width: 70x;
+                      padding: 5px;
+                      margin-top: -65px;
+                      margin-left: 80px;">
+            ListTube
+          </div>
+        </td>
+        <td>
+          <form style="text-align:center; padding-top:25px;" action="/clips/search" method="get">
+          <input type="text" name="query" placeholder="... search for">
+          <input type="submit" class="red_button">
+        </td>
+    </form>
+
+        <td style="text-align: right;
+                    padding-top: 25px;">
+                    Welcome <%= current_user.name %>
+        <%= button_to "Log Out", log_out_path, :class => "button", :method => :delete %></td>
+      </tr>
+    </table>
+
+  </div>
 
 <!-- query is passed through -->
 
 <% @clips.each_with_index do |clip, index| %>
 
-  <div>
+  <div class="container search_res sixteen columns">
     <div>
       <h2><%= clip[:title] %></h2>
     </div>
@@ -18,7 +50,7 @@
 
       <input type="hidden" name="query" value="<%= params[:query] %>">
       <input type="hidden" name="clip_id" value="<%= index.to_i %>">
-      <button type="submit">Save</button>
+      <button type="submit"><i class="fa fa-save fa-2x"></i></button>
     </form>
 
   </div>

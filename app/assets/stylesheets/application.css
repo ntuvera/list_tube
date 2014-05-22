@@ -19,12 +19,14 @@ body {
   background-color: rgba(180, 180, 180, 0.1);
   margin-top: 1px;
 }
-div {
+/*div {
   background-color: white;
-}
+}*/
 ul {
   display: inline-block;
-
+}
+tr {
+  margin: 5px;
 }
 .mast {
   top: 0px;
@@ -38,6 +40,9 @@ ul {
 .container p {
   display: inline-block;
 }
+.search_res {
+  text-align: center;
+}
 .icon {
   background-color:red;
   color: white;
@@ -46,6 +51,9 @@ ul {
   width: 60px;
   height: 40px;
   float: center;
+}
+.white {
+  background-color:white;
 }
 .welcome {
   max-width: 300px;
@@ -63,7 +71,10 @@ ul {
   float: center;
   background: lightgray;
   border: 1px solid black;
-
+}
+.activity {
+  font-size: 12px;
+  left: -20px;
 }
 .border {
   border: 1px solid lightgray;
