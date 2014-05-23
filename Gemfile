@@ -40,4 +40,5 @@ gem 'font-awesome-rails'
 gem 'heroku'
 
 gem 'bcrypt'
-
+gem 'rspec'
+gem 'rspec-rails'
