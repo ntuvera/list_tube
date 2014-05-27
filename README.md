@@ -1,21 +1,25 @@
 #ListTube
+![/screenshot.png]
+
+###A simple playlist editor and sharing application
 
 
-####A simple playlist editor and video sharer
 
-[/screenshot.png]
+####Features
+Search for YouTube videos
 
-features
+Save and Delete from Your Favorites Playlist
 
-Save to Play List
+Send and keep track of sharing videos with other signed in users
 
-Send Video to user
+####This app is brought to you buy the Youtube Data API 
 
-[ interesting line of code]
+![/api_code.png]
 
-[api credit]
-=======
-[ interesting line of code]
+####This was an exercise in data model associations
+This app uses polymorphic self joining tables to associate saved clips to multiple users and will further use it to keep track of sharing in future versions
 
-[api credit]
+![/model_associations.png]
 
+Source code is available for viewing at
+<http://www.github.com/ntuvera/list-tube/>
