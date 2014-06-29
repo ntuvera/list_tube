@@ -2,15 +2,15 @@
   <h3>ListTube - A Simple Playlist Editor and Sharer</h3>
 
   <%= form_tag sessions_path do %>
-   <p>
-     <%= label_tag :username %>
-     <%= text_field_tag :name %>
-   </p>
-   <p>
-   <%= label_tag :password %>
-   <%= password_field_tag :password %>
-   </p>
-   <%= submit_tag 'Log In'%>
+    <p>
+      <%= label_tag :username %>
+      <%= text_field_tag :name %>
+    </p>
+    <p>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </p>
+    <%= submit_tag 'Log In'%>
 
     <button type="submit">
       <%= link_to "Sign up", sign_up_path, method:"get" %>
