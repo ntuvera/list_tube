@@ -52,7 +52,7 @@
               <%= clip.title %>
             </h3>
             <p>
-              <form action="/shares/<%= clip.id %>" method="post">
+              <form action="/shares/<%= clip.id %>" onsubmit="return validateForm()" method="post">
                 <%= token_tag %>
                 <input type="text" name="receiver_id" placeholder="Send To:">
                 <button type="submit">

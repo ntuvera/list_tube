@@ -20,4 +20,7 @@ class SessionsController < ApplicationController
     redirect_to log_in_path, notice: "Logged Out"
   end
 
+  def portfolio
+    @user = User.new
+  end
 end
