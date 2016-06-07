@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # use the system as much as possible without requiring registration.
   root 'sessions#new'
   resources :clips, only: [:create, :edit, :update, :destroy]
+  post 'clips/save'       => 'clips#save'
   get 'clips/search'      => 'clips#search'
 
   get 'shares'            => 'shares#edit'
